@@ -1,0 +1,41 @@
+{% extends 'upload/base.html' %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-sm-12 col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+
+							<h1> {{ base.name }} </h1>
+							<h3> {{ base.zone }} </h3>
+						
+							{% for project in base.project_set.all %}
+								
+									{{ project.name }}
+
+									{% if project.is_favorite %}
+										<img src="http://i.imgur.com/b9b13Rd.png" />
+
+									{% endif %}
+									<br>
+							{%  endfor %}
+
+						</form>
+
+
+					</div>
+
+
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</div>
+{% endblock %}
