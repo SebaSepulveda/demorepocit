@@ -1,0 +1,35 @@
+
+{% extends 'upload/base.html' %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-sm-12 col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+
+									<ul>
+								{% for base in all_base %}
+									<li>  <a href="{% url 'upload:detail' base.id %}"> {{ base.name }}  </a> </li>
+								{% endfor %}
+									</ul>
+
+
+						</form>
+
+
+					</div>
+
+
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</div>
+{% endblock %}

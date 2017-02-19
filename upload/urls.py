@@ -7,6 +7,10 @@ urlpatterns = [
 	
 	# /upload/
     url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^project/$', views.ProjectView.as_view(), name='project'),
+    url(r'^database/$', views.DataView.as_view(), name='data'),
+
+
 
     url(r'^register/$', views.UserFormView.as_view(), name='register'),
     #url(r'^login_user/$', views.login_user, name='login_user'),

@@ -17,6 +17,21 @@ class IndexView(generic.ListView):
 	def get_queryset(self):
 		return Base.objects.all()
 
+class DataView(generic.ListView):
+	template_name='upload/bases_de_datos.html'
+	context_object_name ='all_base'
+	
+	def get_queryset(self):
+		return Base.objects.all()
+	
+
+class ProjectView(generic.ListView):
+	template_name='upload/project_form.html'
+	context_object_name ='all_base'
+
+	def get_queryset(self):
+		return Base.objects.all()
+
 class DetailView(generic.DetailView):
 	model = Base
 	template_name='upload/detail.html'
