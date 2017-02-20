@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^project/$', views.ProjectView.as_view(), name='project'),
     url(r'^database/$', views.DataView.as_view(), name='data'),
+    
 
 
 
@@ -20,7 +21,10 @@ urlpatterns = [
     #/upload/<base_id>
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 
-	url(r'^base/add/$', views.BaseCreate.as_view(), name='base-add')    
+	url(r'^base/add/$', views.BaseCreate.as_view(), name='base-add'),
+
+    url(r'^download/$', views.DownCreate.as_view(), name='download')    
+    
 
 
 ]

@@ -10,6 +10,14 @@ class Base(models.Model):
 
 	def __str__(self):
 		return self.name + ' - ' + self.project_name
+class Down(models.Model):
+	nombre = models.CharField(max_length=250)
+	proyecto= models.CharField(max_length=250)
+	
+	#archivo = models.FileField()
+
+	def __str__(self):
+		return self.name + ' - ' + self.project_name
 
 class Project(models.Model):
 	project =models.ForeignKey(Base, on_delete=models.CASCADE)

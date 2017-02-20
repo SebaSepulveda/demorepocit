@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.views.generic import View
 from django.core.urlresolvers import reverse_lazy
-from .models import Base
+from .models import Base, Down
 from .forms import UserForm
 
 class IndexView(generic.ListView):
@@ -39,6 +39,11 @@ class DetailView(generic.DetailView):
 class BaseCreate(CreateView):
 	model = Base
 	fields =['name','project_name','zone','archivo']
+	success_url=reverse_lazy('upload:index')
+
+class DownCreate(CreateView):
+	model = Down
+	fields =['nombre','proyecto']
 	success_url=reverse_lazy('upload:index')
 
 

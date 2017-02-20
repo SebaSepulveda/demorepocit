@@ -45,8 +45,14 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li class="">
+						<a href="{% url 'upload:download' %}">
+							<span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"> </span>&nbsp;
+							Descargar Archivo
+						</a>
+					</li>
+					<li class="">
 						<a href="{% url 'upload:base-add' %}">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>&nbsp;
+							<span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"> </span>&nbsp;
 							Subir Archivo
 						</a>
 					</li>
@@ -70,7 +76,7 @@
 
 </body>
 <footer>
-	<div class="navbar-inverse">
+	<div class="navbar navbar-inverse">
 		<div id="footer" class ="navbar-footer">
 			<div class="container">
 				<div class="row">
