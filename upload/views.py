@@ -3,12 +3,15 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
+from django.core.mail import send_mail
 from django.db.models import Q
 from django.views.generic import View
 from django.core.urlresolvers import reverse_lazy
 from .models import Base, Down
 from .forms import UserForm
+
+
 
 class IndexView(generic.ListView):
 	template_name='upload/index.html'
@@ -40,6 +43,9 @@ class BaseCreate(CreateView):
 	model = Base
 	fields =['name','project_name','zone','archivo']
 	success_url=reverse_lazy('upload:index')
+	send_mail('Descarga CIT2', 'Descarga Disponible en Servidor.', 'vaalhk@gmail.com', ['seba.sepulveda88@gmail.com'], fail_silently=False)
+	
+
 
 class DownCreate(CreateView):
 	model = Down

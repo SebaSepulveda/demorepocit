@@ -6,7 +6,7 @@ class Base(models.Model):
 	name = models.CharField(max_length=250)
 	project_name= models.CharField(max_length=250)
 	zone =models.CharField(max_length=250)
-	archivo = models.FileField()
+	archivo = models.FileField(upload_to='media/')
 
 	def __str__(self):
 		return self.name + ' - ' + self.project_name
