@@ -1,16 +1,18 @@
 from django.views import generic
+import os
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.forms import ModelForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail
 from django.db.models import Q
 from django.views.generic import View
 from django.core.urlresolvers import reverse_lazy
-from .models import Base, Down
-from .forms import UserForm
-
+from .models import Base, Down, MyModel, Uploader
+from .forms import UserForm, DownloadForm, MyModelForm
+import subprocess
 
 
 class IndexView(generic.ListView):
@@ -37,20 +39,43 @@ class ProjectView(generic.ListView):
 
 class DetailView(generic.DetailView):
 	model = Base
-	template_name='upload/detail.html'
+	template_name ='upload/detail.html'
+
+
+class LinkView(generic.ListView):
+	template_name='upload/link.html'
+	context_object_name ='all_base'
+
+	def get_queryset(self):
+		return Base.objects.all()
+
+class UploaderCreate(CreateView):
+	model = Uploader
+	fields = ['update','nombre_proyecto','razon_de_carga','tipo_de_datos','unidad_regional','archivo','comentarios']
+	success_url = reverse_lazy('upload:index')
+	send_mail('Descarga CIT2', 'Descarga Disponible en Servidor.', 'vaalhk@gmail.com', ['seba.sepulveda88@gmail.com'], fail_silently=False)
+	
+
 
 class BaseCreate(CreateView):
 	model = Base
-	fields =['name','project_name','zone','archivo']
-	success_url=reverse_lazy('upload:index')
+	fields = ['name','project_name','zone','archivo']
+	success_url = reverse_lazy('upload:index')
 	send_mail('Descarga CIT2', 'Descarga Disponible en Servidor.', 'vaalhk@gmail.com', ['seba.sepulveda88@gmail.com'], fail_silently=False)
 	
 
 
 class DownCreate(CreateView):
-	model = Down
-	fields =['nombre','proyecto']
-	success_url=reverse_lazy('upload:index')
+	model = Base
+	fields = ['name','project_name']
+	success_url = reverse_lazy('upload:link')
+
+class CreateMyModelView(CreateView):
+	model=MyModel
+	template_name='upload/down_form.html'
+	#form_class=MyModelForm
+	fields=['manzana', 'archivo','poligono']
+	success_url=reverse_lazy('upload:link')
 
 
 class UserFormView(View):

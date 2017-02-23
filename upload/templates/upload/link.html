@@ -1,0 +1,32 @@
+{% extends 'upload/base.html' %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-sm-12 col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1>Link de Descarga</h1>
+						<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							
+							<a href="http://127.0.0.1:8000/static/upload/downloads/01_Iquique_AltoHospicio_poligono.zip">Click Para Descargar</a>
+
+						</form>
+						
+
+					</div>
+					
+
+
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</div>
+{% endblock %}
+							
