@@ -23,6 +23,15 @@ TIPO_CHOICES = (
     ('shapefile','Shapefile'),
         
 )
+TIPO_REGIONAL = (
+    ('region','Region'),
+    ('provincia','Provincia'),
+    ('comuna','Comuna'),
+    ('distrito','Distrito'),
+    ('manzana','Manzana'),
+        
+)
+
 
 
 class Uploader(models.Model):
@@ -30,7 +39,7 @@ class Uploader(models.Model):
 	nombre_proyecto = models.CharField(max_length=250)
 	razon_de_carga=models.CharField(max_length=250)
 	tipo_de_datos=models.CharField(max_length=250, choices=TIPO_CHOICES,default='shapefile')
-	unidad_regional=models.CharField(max_length=250)
+	unidad_territorial=models.CharField(max_length=100, choices=TIPO_REGIONAL, default='region')
 	comentarios=models.CharField(max_length=250)
 	archivo = models.FileField(upload_to='media/')
 

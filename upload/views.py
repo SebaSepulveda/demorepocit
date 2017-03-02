@@ -51,7 +51,7 @@ class LinkView(generic.ListView):
 
 class UploaderCreate(CreateView):
 	model = Uploader
-	fields = ['update','nombre_proyecto','razon_de_carga','tipo_de_datos','unidad_regional','archivo','comentarios']
+	fields = ['update','nombre_proyecto','razon_de_carga','tipo_de_datos','unidad_territorial','archivo','comentarios']
 	success_url = reverse_lazy('upload:index')
 	send_mail('Descarga CIT2', 'Descarga Disponible en Servidor.', 'vaalhk@gmail.com', ['seba.sepulveda88@gmail.com'], fail_silently=False)
 	
