@@ -31,8 +31,20 @@ TIPO_REGIONAL = (
     ('manzana','Manzana'),
         
 )
+PAQUETES = (
+    ('R1','Region 1'),
+    ('R2','Region 2'),
+    ('R3','Region 3'),
+    ('R4','Region 4'),
+    ('R5','Region 5'),
+        
+)
 
+class Paquetes(models.Model):
+	tipo_paquetes=models.CharField(max_length=250, choices=PAQUETES, default='R1')
 
+class Tags(models.Model):
+	Tags=models.CharField(max_length=250)
 
 class Uploader(models.Model):
 	update = models.CharField(max_length=50, choices=BOOL_CHOICES, default='update')

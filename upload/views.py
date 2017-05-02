@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 from django.db.models import Q
 from django.views.generic import View
 from django.core.urlresolvers import reverse_lazy
-from .models import Base, Down, MyModel, Uploader
+from .models import Base, Down, MyModel, Uploader, Paquetes, Tags
 from .forms import UserForm, DownloadForm, MyModelForm
 import subprocess
 
@@ -54,6 +54,14 @@ class UploaderCreate(CreateView):
 	fields = ['update','nombre_proyecto','razon_de_carga','tipo_de_datos','unidad_territorial','archivo','comentarios']
 	success_url = reverse_lazy('upload:index')
 	send_mail('Descarga CIT2', 'Descarga Disponible en Servidor.', 'vaalhk@gmail.com', ['seba.sepulveda88@gmail.com'], fail_silently=False)
+
+class Paquetes(CreateView):
+	model =Paquetes
+	fields='upload/paquetes.html'
+
+class Tags(CreateView):
+	model=Tags
+	fields='upload/tags.html'
 	
 
 

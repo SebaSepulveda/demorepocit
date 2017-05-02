@@ -22,7 +22,9 @@ urlpatterns = [
 	url(r'^base/add/$', views.UploaderCreate.as_view(), name='base-add'),
 
     url(r'^download/$', views.CreateMyModelView.as_view(), name='download'),
-    url(r'^link/$', views.LinkView.as_view(), name='link')
+    url(r'^link/$', views.LinkView.as_view(), name='link'),
+    url(r'^paquetes/$', views.Paquetes.as_view(), name='paquetes'),
+    url(r'^tags/$', views.Tags.as_view(), name='tags')
 
 
 ]
