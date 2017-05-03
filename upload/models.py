@@ -3,7 +3,9 @@ from __future__ import unicode_literals
 from django.db import models
 from django.forms import ModelForm
 from django.utils.datastructures import MultiValueDictKeyError
+from taggit.managers import TaggableManager
 import os
+
 
 class Base(models.Model):
 	name = models.CharField(max_length=250)
@@ -21,6 +23,7 @@ BOOL_CHOICES = (
 )
 TIPO_CHOICES = (
     ('shapefile','Shapefile'),
+    ('csv', 'CSV'),
         
 )
 TIPO_REGIONAL = (
@@ -42,6 +45,10 @@ PAQUETES = (
 
 class Paquetes(models.Model):
 	tipo_paquetes=models.CharField(max_length=250, choices=PAQUETES, default='R1')
+	#tipo_de_datos=models.CharField(max_length=250, choices=TIPO_CHOICES,default='shapefile')
+	
+
+
 
 class Tags(models.Model):
 	Tags=models.CharField(max_length=250)
@@ -54,6 +61,7 @@ class Uploader(models.Model):
 	unidad_territorial=models.CharField(max_length=100, choices=TIPO_REGIONAL, default='region')
 	comentarios=models.CharField(max_length=250)
 	archivo = models.FileField(upload_to='media/')
+
 
 
 

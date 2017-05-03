@@ -57,11 +57,20 @@ class UploaderCreate(CreateView):
 
 class Paquetes(CreateView):
 	model =Paquetes
-	fields='upload/paquetes.html'
+	fields=['tipo_paquetes', 'name']
+	template_name='upload/paquetes.html'
 
-class Tags(CreateView):
+	def get_queryset(self):
+		return Base.objects.all()
+	
+	
+
+class Tags(generic.ListView):
 	model=Tags
-	fields='upload/tags.html'
+	template_name='upload/tags.html'
+	def get_queryset(self):
+		return Base.objects.all()
+
 	
 
 
@@ -69,7 +78,7 @@ class BaseCreate(CreateView):
 	model = Base
 	fields = ['name','project_name','zone','archivo']
 	success_url = reverse_lazy('upload:index')
-	send_mail('Descarga CIT2', 'Descarga Disponible en Servidor.', 'vaalhk@gmail.com', ['seba.sepulveda88@gmail.com'], fail_silently=False)
+	#send_mail('Descarga CIT2', 'Descarga Disponible en Servidor.', 'vaalhk@gmail.com', ['seba.sepulveda88@gmail.com'], fail_silently=False)
 	
 
 
