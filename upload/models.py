@@ -40,12 +40,23 @@ PAQUETES = (
     ('R3','Region 3'),
     ('R4','Region 4'),
     ('R5','Region 5'),
+    ('R6','Region 6'),
+    ('R7','Region 7'),
+    ('R8','Region 8'),
+    ('R9','Region 9'),
+    ('R10','Region 10'),
+    ('R11','Region 11'),
+    ('R12','Region 12'),
+    ('R13','Region 13'),
+    ('R14','Region 14'),
+    ('R15','Region 15'),
+
         
 )
 
 class Paquetes(models.Model):
 	tipo_paquetes=models.CharField(max_length=250, choices=PAQUETES, default='R1')
-	#tipo_de_datos=models.CharField(max_length=250, choices=TIPO_CHOICES,default='shapefile')
+	name=models.CharField(max_length=250, choices=TIPO_CHOICES,default='shapefile')
 	
 
 
