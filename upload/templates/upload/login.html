@@ -1,26 +1,24 @@
-{% load i18n %}
-{% load account_tags %}
+{% extends "blog/base.html" %}
 
-
-<ul class="nav navbar-nav pull-right">
-    {% if request.user.is_authenticated %}
-        <p class="navbar-text">
-            <i class="fa fa-user"></i> {% user_display request.user %}
-        </p>
-        <li>
-            <a href="{% url 'account_settings' %}"><i class="fa fa-cog"></i> {% trans "Configuracion" %}</a>
-        </li>
-        <li>
-            <a id="account_logout" href="{% url 'account_logout' %}"><i class="fa fa-power-off"></i> {% trans "Cerrar Sesión" %}</a>
-        </li>
-    {% else %}
-        <li><a href="{% url 'account_login' %}">{% trans "Iniciar Sesión" %}</a></li>
-        {% if ACCOUNT_OPEN_SIGNUP %}
-            <li><a href="{% url 'account_signup' %}">{% trans "Registro" %}</a></li>
-        {% endif %}
+{% block content %}
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
-</ul>
 
-<form id="accountLogOutForm" style="display: none;" action="{% url 'account_logout' %}" method="POST">
+    <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-</form>
+        <table>
+        <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+        </table>
+
+        <input type="submit" value="login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+{% endblock %}

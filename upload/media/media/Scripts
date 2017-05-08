@@ -1,5 +1,0 @@
-Script de filtro para regiones
-
- "type" = 'residential' or  "type"= 'tertiary' or  "type"= 'primary' or  "type"= 'secondary' or  "type"= 'pedestrian' or  "type"= 'construction' or  "type"= 'construction' or  "type"= 'primary_link' or  "type"= 'road' or  "type"= 'tertiary_link' or  "type"= 'secondary_link' or  "type"= 'proposed'
-
- 

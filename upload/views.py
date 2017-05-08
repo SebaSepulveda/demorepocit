@@ -110,10 +110,10 @@ class UserFormView(View):
 			user = form.save(commit=False)
 
 			#clean data
-			username=form.cleaned_data['username']
-			password=form.cleaned_data['password']
-			user.set_password(password)
-			user.save()
+			#username=form.cleaned_data['username']
+			#password=form.cleaned_data['password']
+			#user.set_password(password)
+			#user.save()
 
 			user=authenticate(username=username,password=password)
 

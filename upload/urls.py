@@ -1,5 +1,6 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
+from django.contrib import admin
 
 app_name = 'upload'
 
@@ -13,8 +14,8 @@ urlpatterns = [
 
 
     url(r'^register/$', views.UserFormView.as_view(), name='register'),
-    #url(r'^login_user/$', views.login_user, name='login_user'),
-    #url(r'^logout_user/$', views.logout_user, name='logout_user'),
+    url(r'^login/$', views.login, {'template_name':'login.html'}),
+    url(r'^logout/$', views.logout, kwargs={'next_page':'/'}),
 
 
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),

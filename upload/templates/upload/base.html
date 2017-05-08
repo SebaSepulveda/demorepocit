@@ -4,9 +4,15 @@
 		<meta charset="UTF-8">
 		<title>CIT</title>
 		{% load staticfiles %}
-		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		{% load static %}
+		
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Satisfy">
+		<link href="{% static "upload/style.css" %}" rel="stylesheet">
+
 		<link rel="stylesheet" type="text/css" href="{% static 'upload/style.css'  %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'upload/static/style.css'  %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'upload/static/upload/style.css'  %}"/>
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<script type="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script type="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
